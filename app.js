@@ -101,8 +101,12 @@ app.use(cors());
 
 // require
 const user = require("./routes/user")
+const workspace = require("./routes/workspace")
+
 // use
 app.use("/", user);
+app.use("/", workspace);
+
 
 
  mongoose
