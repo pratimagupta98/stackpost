@@ -22,3 +22,22 @@ const bcrypt = require("bcryptjs");
         .catch((error) => resp.errorr(res, error));
     }
   }
+
+  exports.Connect_with_myWorkSpace = async (req, res) => {
+    await Workspce.findOneAndUpdate(
+      {
+        _id: req.params.id,
+      },
+      { $set: req.body },
+      { new: true }
+    )
+      .then((data) => resp.successr(res, data))
+      .catch((error) => resp.errorr(res, error));
+  };
+
+  exports.workSpace_list = async (req, res) => {
+    await Workspce.find()
+      .sort({ sortorder: 1 })
+      .then((data) => resp.successr(res, data))
+      .catch((error) => resp.errorr(res, error));
+  };

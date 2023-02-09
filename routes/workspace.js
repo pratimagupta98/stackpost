@@ -3,14 +3,15 @@ const router = express.Router();
  
 
 const {
-    createWorkSpace
+    createWorkSpace,
+    workSpace_list
     
 } = require("../controller/workspace");
 
  
  
  router.post("/user/createWorkSpace", createWorkSpace);
- //router.post("/user/login", login);
+ router.get("/user/workSpace_list", workSpace_list);
 
  
 
