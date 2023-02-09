@@ -5,8 +5,8 @@
 
 
  require("dotenv").config();
-// const mongoose = require("mongoose");
-// mongoose.set('strictQuery', false);
+ const mongoose = require("mongoose");
+mongoose.set('strictQuery', false);
 // const session = require('express-session');
  const passport = require('passport');
  const FacebookStrategy = require('passport-facebook').Strategy;
@@ -99,21 +99,26 @@ app.use(cors());
 // //   res.send("Hello World!");
 // // });
 
+// require
+const user = require("./routes/user")
+// use
+app.use("/", user);
 
-// //  mongoose
-// //   .connect(process.env.DB, {
-// //     useNewUrlParser: true,
-// //     // useFindAndModify: false,
-// //     useNewUrlParser: true,
-// //     useUnifiedTopology: true,
-// //     //useFindAndModify: false,
-// //   })
-// //   .then(() => {
-// //     console.log("DB CONNECTED SUCCEFULLY");
-// //   })
-// //   .catch((error) => {
-// //     console.log(error);
-// //   });
+
+ mongoose
+  .connect(process.env.DB, {
+    useNewUrlParser: true,
+    // useFindAndModify: false,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    //useFindAndModify: false,
+  })
+  .then(() => {
+    console.log("DB CONNECTED SUCCEFULLY");
+  })
+  .catch((error) => {
+    console.log(error);
+  });
   
 
 // // app.listen(process.env.PORT || 9000, () => {
