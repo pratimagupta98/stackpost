@@ -41,3 +41,14 @@ const bcrypt = require("bcryptjs");
       .then((data) => resp.successr(res, data))
       .catch((error) => resp.errorr(res, error));
   };
+
+  exports.dlt_workspace = async (req, res) => {
+    await Workspce.deleteOne({ _id: req.params.id })
+      .then((data) => resp.deleter(res, data))
+      .catch((error) => resp.errorr(res, error));
+  };
+  exports.viewone_workspace = async (req, res) => {
+    await Workspce.findOne({ _id: req.params.id })
+      .then((data) => resp.successr(res, data))
+      .catch((error) => resp.errorr(res, error));
+  };

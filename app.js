@@ -102,10 +102,14 @@ app.use(cors());
 // require
 const user = require("./routes/user")
 const workspace = require("./routes/workspace")
+const add_fb_profile = require("./routes/add_fb_profile")
+
 
 // use
 app.use("/", user);
 app.use("/", workspace);
+app.use("/", add_fb_profile);
+
 
 
 
