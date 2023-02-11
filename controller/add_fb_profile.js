@@ -64,8 +64,10 @@ exports.add_fb_post = async (req, res) => {
     },
     body: JSON.stringify(
       {
-        "post": "The best FB post ever #best https://www.facebook.com",
-        "mediaUrls": ["https://img.ayrshare.com/012/gb.jpg"],
+      //  "post": "The best FB post ever #best https://www.facebook.com",
+      "post": req.body.post,  
+      //  "mediaUrls": ["https://img.ayrshare.com/012/gb.jpg"],
+      "mediaUrls" : req.body.mediaUrls,
         "platforms": ["facebook"]
     }
     ),
@@ -88,11 +90,65 @@ res.status(200).json({
 }
  
 
-exports.media = async (req, res) => {
-const fetch = require("node-fetch");
+exports.history = async (req, res) => {
+  const fetch = require("node-fetch");
+  const API_KEY = "2SH3942-TTMME2V-KT7N36F-ZV13NY2";
+  
+  fetch("https://app.ayrshare.com/api/history", {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${API_KEY}`
+        }
+      })
+        .then((res) => res.json())
+        .then((json) => {
+          res.send(json)
+          //  console.log(json)
+        })
+      
+        .catch(console.error);
+  }
+
+
+  exports.delete_post = async (req, res) => {
+    const fetch = require("node-fetch");
+    const API_KEY = "2SH3942-TTMME2V-KT7N36F-ZV13NY2";
+  
+    fetch("https://app.ayrshare.com/api/post", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${API_KEY}`
+      },
+      body: JSON.stringify(
+        {
+        //  "post": "The best FB post ever #best https://www.facebook.com",
+        "id": req.body.id,  
+        // //  "mediaUrls": ["https://img.ayrshare.com/012/gb.jpg"],
+        // "mediaUrls" : req.body.mediaUrls,
+        //   "platforms": ["facebook"]
+      }
+      ),
+    })
+      .then((res) => res.json())
+      .then((json) =>{
+  res.status(200).json({
+    data : json
+  })
+      }
+       //console.log("json",json)
+       )
+      
+    
+      .catch(console.error);
+  }
+
+
+  exports.Profile = async (req, res) => {
+  const fetch = require("node-fetch");
 const API_KEY = "2SH3942-TTMME2V-KT7N36F-ZV13NY2";
 
-fetch("https://app.ayrshare.com/api/media", {
+fetch("https://app.ayrshare.com/api/profiles", {
       method: "GET",
       headers: {
         "Authorization": `Bearer ${API_KEY}`
@@ -101,5 +157,4 @@ fetch("https://app.ayrshare.com/api/media", {
       .then((res) => res.json())
       .then((json) => console.log(json))
       .catch(console.error);
-
   }

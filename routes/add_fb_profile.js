@@ -4,15 +4,21 @@ const router = express.Router();
 
 const {
     add_fb_post,
-    media
+    history,
+    delete_post,
+    Profile
     
 } = require("../controller/add_fb_profile");
 
  
  
  router.post("/user/add_fb_post", add_fb_post);
- router.get("/user/media", media);
+ router.get("/user/history", history);
+ router.delete("/user/delete_post", delete_post);
+ router.get("/user/Profile", Profile);
 
+
+ 
  
 
 module.exports = router;
