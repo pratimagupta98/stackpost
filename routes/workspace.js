@@ -22,7 +22,7 @@ const { response } = require("express");
  router.post("/user/createWorkSpace", createWorkSpace);
  router.get("/user/workSpace_list", workSpace_list);
  router.get("/user/dlt_workspace", dlt_workspace);
- router.get("/user/viewone_workspace", viewone_workspace);
+ router.get("/user/viewone_workspace/:id", viewone_workspace);
 
 
 
