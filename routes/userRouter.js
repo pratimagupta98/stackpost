@@ -15,13 +15,13 @@ const {userController} = require("../controller/userController");
 // });
 
 userRouter.get("/login/fb", passport.authenticate("facebook"))
-userRouter.get(
-  "/auth/facebook/callback",
-  passport.authenticate("facebook", {
-    successRedirect: "/",
-    failureRedirect: "/fail"
-  })
-);
+// userRouter.get(
+//   "/auth/facebook/callback",
+//   passport.authenticate("facebook", {
+//     successRedirect: "/",
+//     failureRedirect: "/fail"
+//   })
+// );
 
 userRouter.get("/fail", (req, res) => {
   res.send("Failed attempt");
@@ -33,10 +33,30 @@ userRouter.get("/", (req, res) => {
 
 userRouter.get("/auth/facebook",passport.authenticate('facebook',{scope:['public_profile','email']}))
 //export default userRouter;
-userRouter.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/login' }),
-  function(req, res) {
+// userRouter.get('/auth/facebook/callback',
+//   passport.authenticate('facebook', { failureRedirect: '/login' }),
+//   function(req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect('/');
+//   });
+  userRouter.get('/auth/google',passport.authenticate('google',{scope:['profile']}))
+
+
+
+
+  userRouter.get('/auth/facebook',
+  passport.authenticate('facebook'));
+
+  userRouter.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/login' },
+  (req,res,next)=>{
+console.log("user",req.user,req.isAuthenticated())
+res.send("user is logged in")
+  }),
+ // function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/');
-  });
+  //  res.redirect('/');
+
+  //}
+  );
 module.exports = userRouter;

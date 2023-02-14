@@ -20,11 +20,11 @@ router.get('/auth/facebook', passport.authenticate('facebook', {
   scope: ['public_profile', 'email']
 }));
 
-router.get('/auth/facebook/callback',
-  passport.authenticate('facebook', {
-    successRedirect: '/profile',
-    failureRedirect: '/error'
-  }));
+// router.get('/auth/facebook/callback',
+//   passport.authenticate('facebook', {
+//     successRedirect: '/profile',
+//     failureRedirect: '/error'
+//   }));
 
 router.get('/logout', function (req, res) {
   req.logout();
