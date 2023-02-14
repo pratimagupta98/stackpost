@@ -92,7 +92,7 @@ res.status(200).json({
 
 exports.history = async (req, res) => {
   const fetch = require("node-fetch");
-  const API_KEY = "2SH3942-TTMME2V-KT7N36F-ZV13NY2";
+  const API_KEY = "6D7WPF5-5RX4JC2-JWHH12G-GP84J41";
   
   fetch("https://app.ayrshare.com/api/history", {
         method: "GET",
