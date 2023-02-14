@@ -6,7 +6,12 @@ const {
     add_fb_post,
     history,
     delete_post,
-    Profile
+    Profile,
+    auto_schedule,
+    auto_schedule_list,
+    get_profile_key,
+    create_profile_key,
+    add_instagram_post
     
 } = require("../controller/add_fb_profile");
 
@@ -16,6 +21,15 @@ const {
  router.get("/user/history", history);
  router.delete("/user/delete_post", delete_post);
  router.get("/user/Profile", Profile);
+
+ router.post("/user/auto_schedule", auto_schedule);
+ router.get("/user/auto_schedule_list", auto_schedule_list);
+ router.get("/user/get_profile_key", get_profile_key);
+ router.post("/user/create_profile_key", create_profile_key);
+ router.post("/user/add_instagram_post", add_instagram_post);
+
+
+
 
 
  
