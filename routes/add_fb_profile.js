@@ -11,7 +11,8 @@ const {
     auto_schedule_list,
     get_profile_key,
     create_profile_key,
-    add_instagram_post
+    add_instagram_post,
+    youtube_post
     
 } = require("../controller/add_fb_profile");
 
@@ -27,10 +28,12 @@ const {
  router.get("/user/get_profile_key", get_profile_key);
  router.post("/user/create_profile_key", create_profile_key);
  router.post("/user/add_instagram_post", add_instagram_post);
+ router.post("/user/youtube_post", youtube_post);
 
 
 
 
+ 
 
  
  

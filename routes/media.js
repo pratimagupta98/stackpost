@@ -4,7 +4,8 @@ const multer = require("multer");
 const fs = require("fs"); 
 
 const {
-    upload_media,get_media
+    upload_media,get_media,
+    viewone_media,del_media,edit_media,upload
   
     
 } = require("../controller/media");
@@ -48,11 +49,19 @@ const storage = multer.diskStorage({
     //   { name: "address_proof_img", maxCount: 5 },
   ]);
  
+  router.post("/user/upload", upload);
+
  router.post("/user/upload_media",multipleUpload, upload_media);
+ router.post("/user/edit_media/:id",multipleUpload, edit_media);
+
  router.get("/user/get_media", get_media);
+  router.get("/user/viewone_media/:id", viewone_media);
+  router.get("/user/del_media/:id", del_media);
+
+
 
   
- 
+  
  
 
 module.exports = router;
