@@ -4,18 +4,16 @@ const Schema = mongoose.Schema;
 const thisSchema = new Schema(
   {
    
-    first_name: {
+    name: {
       type: String,
     },
-    email: {
+    facebookID: {
       type: String,
     },
-    // mobile: {
-    //   type: Number,
-    // },
-    last_name: {
+    accessToken: {
       type: String,
     },
+   
      
     
   },

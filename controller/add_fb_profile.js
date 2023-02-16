@@ -1,5 +1,6 @@
+const { findById } = require('../models/media');
 
-
+const fetch = require('node-fetch')
 exports.add_fb_profile = async (req, res) => {
   var request = require('request');
 
@@ -316,4 +317,25 @@ exports.youtube_post = async (req, res) => {
       })
     })
     .catch(console.error);
+}
+
+
+function loginWithFacebook(){
+  FB.login(response => {
+    const{authResponse:{accessToken,userID}} = response
+    fetch('/login_with_facebook',{
+      method:'POST',
+      headers: {
+        'Content-Type' :'application/json'
+      },
+      body:JSON.stringify({accessToken,userID})
+    }).then(res=>{
+      console.log(res)
+    })
+    FB.api('/me',function(response){
+      console.log(JSON.stringify(response))
+    })
+    
+  },{scope:'public_profile,email'})
+  return false
 }
