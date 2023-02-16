@@ -25,7 +25,10 @@ const thisSchema = new Schema(
       },
       label:{
         type: mongoose.Schema.Types.ObjectId, ref: "label"
-      }
+      },
+      platforms:{
+        type:String
+      },
   
   },
   { timestamps: true }
