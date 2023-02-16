@@ -26,9 +26,9 @@ const thisSchema = new Schema(
       label:{
         type: mongoose.Schema.Types.ObjectId, ref: "label"
       },
-      platform:{
-        type:String
-      },
+      platform:[{
+        type: String
+    }],
   
   },
   { timestamps: true }
