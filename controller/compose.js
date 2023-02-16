@@ -50,7 +50,7 @@ exports.add_compose = async (req, res) => {
 }
 
 exports.get_compose = async (req, res) => {
-    await Media.find()
+    await Compose.find()
         .sort({ sortorder: 1 })
         .then((data) => resp.successr(res, data))
         .catch((error) => resp.errorr(res, error));
@@ -58,13 +58,13 @@ exports.get_compose = async (req, res) => {
 
 
 exports.viewone_compose= async (req, res) => {
-    await Media.findOne({ _id: req.params.id })
+    await Compose.findOne({ _id: req.params.id })
         .then((data) => resp.successr(res, data))
         .catch((error) => resp.errorr(res, error));
 };
 
 exports.del_compose = async (req, res) => {
-    await Media.deleteOne({ _id: req.params.id })
+    await Compose.deleteOne({ _id: req.params.id })
         .then((data) => resp.deleter(res, data))
         .catch((error) => resp.errorr(res, error));
 };
@@ -91,7 +91,7 @@ exports.edit_media = async (req, res) => {
             data.media_img = alluploads;
         }
     }
-    await Media.findOneAndUpdate(
+    await Compose.findOneAndUpdate(
         { _id: req.params.id },
         { $set: data },
         { new: true }
