@@ -26,7 +26,7 @@ const thisSchema = new Schema(
       label:{
         type: mongoose.Schema.Types.ObjectId, ref: "label"
       },
-      platforms:{
+      platform:{
         type:String
       },
   

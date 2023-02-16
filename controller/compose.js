@@ -13,7 +13,7 @@ cloudinary.config({
 
 
 exports.add_compose = async (req, res) => {
-    const { url,uploaded_img,desc,date,time,label ,platforms} = req.body
+    const { url,uploaded_img,desc,date,time,label ,platform} = req.body
     const newCompose = new Compose({
         url:url,
         uploaded_img:uploaded_img,
@@ -21,7 +21,7 @@ exports.add_compose = async (req, res) => {
         date:date,
         time:time,
         label:label,
-        platforms:platforms
+        platform:platform
     });
     if (req.files) {
         if (req.files.media_img[0].path) {
