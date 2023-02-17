@@ -51,7 +51,7 @@ exports.add_compose = async (req, res) => {
 }
 
 exports.get_compose = async (req, res) => {
-    await Compose.find()
+    await Compose.find().populate("uploaded_img")
         .sort({ sortorder: 1 })
         .then((data) => resp.successr(res, data))
         .catch((error) => resp.errorr(res, error));

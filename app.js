@@ -106,6 +106,8 @@ const add_fb_profile = require("./routes/add_fb_profile")
 const media = require("./routes/media")
 const label = require("./routes/label")
 const compose = require("./routes/compose")
+const create_goal = require("./routes/create_goal")
+
 
 
 
@@ -117,6 +119,8 @@ app.use("/", add_fb_profile);
 app.use("/", media);
 app.use("/", label);
 app.use("/", compose);
+app.use("/", create_goal);
+
 
 
 

@@ -3,8 +3,6 @@ const Schema = mongoose.Schema;
 
 const thisSchema = new Schema(
   {
-
-  
     time: {
       type: String,
     },
