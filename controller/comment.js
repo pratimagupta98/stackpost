@@ -24,7 +24,7 @@ exports.get_comment = async (req, res) => {
 
 
 exports.viewone_comment = async (req, res) => {
-    await Comment.findOne({ _id: req.params.id })
+    await Comment.findOne({ _id: req.params.id }).populate("userid").populate("post")
         .then((data) => resp.successr(res, data))
         .catch((error) => resp.errorr(res, error));
 };
