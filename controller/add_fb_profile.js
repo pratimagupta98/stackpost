@@ -1,4 +1,4 @@
-const { findById } = require('../models/media');
+const FbProfile = require('../models/add_fb_profile');
 
 const fetch = require('node-fetch')
 exports.add_fb_profile = async (req, res) => {
@@ -74,7 +74,8 @@ exports.add_fb_post = async (req, res) => {
     ),
   })
     .then((res) => res.json())
-    .then((json) => {
+    .then(async(json) => {
+      const createfbpost = await FbProfile.create(json);
       res.status(200).json({
         data: json
       })
