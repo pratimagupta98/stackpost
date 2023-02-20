@@ -47,4 +47,11 @@ exports.edit_comment = async (req, res) => {
 };
 
 
+exports.comment_by_post = async (req, res) => {
+    await Comment.find({post:req.params.id}).populate("userid").populate("post")
+        .sort({ sortorder: 1 })
+        .then((data) => resp.successr(res, data))
+        .catch((error) => resp.errorr(res, error));
+};
+
 
