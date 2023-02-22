@@ -285,14 +285,76 @@ app.post("/fblogin", async (req, res) => {
 
 
 
+// const { google } = require('googleapis');
+// app.post("/auth/facebook/callback", async (req, res) => {
+//   accessToken = "EAAIFvNXF4vUBABYm3K6cwE4pqP5ZAfMd1zOR7nnSY078gfRFQRiMYtEbRtIzcFhC0xDoHMycCA9K7YKl9OPj6GXOCB6BcEP7mdLbafNTppuJ6YwEFm4EbYUgmMSGbDfYx9H7Y88qWE0sOeFS8sO92Ka7ctBX8jODuZBRTbR9cS06KZAWIjyOCgv1eZCqh0VllxIFGzQ69QZDZD"
+// const auth = new google.auth.OAuth2(
+//   '569258551927541',
+//   '8b9fd90474ea14393b3abbe726dfe8a0',
+//   'http://localhost:3000/auth/facebook/callback'
+// );
+// console.log("auth",auth)
+// async function getGoogleUserProfile( accessToken ) {
+//   console.log("token",accessToken)
+//   const people = google.people({ version: 'v1', auth });
+//   console.log("people",people)
+//   const userProfile = await people.people.get({
+//     resourceName: 'people/me',
+//     personFields: 'names,locations' 
+//   });
+//   return userProfile.data;
+// // console.log("STRING",getGoogleUserProfile())
+// //   res.send(200).json({
+// // data : userProfile
+// //   })
+// }
+// getGoogleUserProfile()
+// })
+
+
+const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+const GOOGLE_CLIENT_ID = '109381462500-8lja66d0g6srr34sgng051hjnnbmb9cv.apps.googleusercontent.com';
+const GOOGLE_CLIENT_SECRET = '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';
+passport.use(new GoogleStrategy({
+    clientID: GOOGLE_CLIENT_ID,
+    clientSecret: GOOGLE_CLIENT_SECRET,
+    callbackURL: "http://astrologically.in"
+  },
+  function(accessToken, refreshToken, profile, done) {
+      userProfile=profile;
+      return done(null, userProfile);
+  }
+));
+ 
+app.get('/auth/google', 
+  passport.authenticate('google', { scope : ['profile', 'email'] }));
+ 
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { scope : ['profile', 'email'] }, { failureRedirect: '/error' }),
+  function(req, res) {
+    // Successful authentication, redirect success.
+    res.redirect('/success');
+  });
+  const axios = require("axios")
+  app.get("/fblogin_login", async (req, res) => {
+    access_token = "EAAIFvNXF4vUBAAadWJy9bLFBKMqjEvI4XMMvW0ZCWeOsu4ZCwJkD9755BTi9wcBMf3HkQhyvIX1IxqTn5Bz4kMvi8dBx9d49bKkqiDtBPjRO6R0cQiv64yYf1ZCufgqHZBVJCoLsiJs7iBV5BiM0llbfR0Y4QBbZC1rK5jFpPfCWbJ1p9zPlR7acVSgkWpHUTbJJOJJgGhTN2ZA9ZBwyMP1"
+    async function getGoogleUserInfo(access_token) {
+      const { data } = await axios({
+        url: 'https://www.googleapis.com/oauth2/v2/userinfo',
+        method: 'get',
+        headers: {
+          Authorization: `Bearer ${access_token}`,
+        },
+      });
+      console.log("data",data); // { id, email, given_name, family_name }
+      return data;
+  };
+ console.log("USER" ,getGoogleUserInfo())
+  })
 
 
 
-
-
-
-
-
+  
 
 
 app.listen(port, () => {
