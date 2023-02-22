@@ -14,7 +14,12 @@ const thisSchema = new Schema(
       type: String,
     },
    
-     
+     id:{
+      type: String,
+     },
+     email:{
+      type: String,
+     }
     
   },
  

@@ -37,7 +37,7 @@ const {
 
    // console.log( userID)
 
-    const accessToken = "EAAIFvNXF4vUBAKZBsmIEwZBOuMMbkd91wPTINd9HKj0EZAhnnUmP897EvAmmlSHvX404EWJA9OvY5ZAEetfZCGWj8Fnnk4dj3piotkAZAkkJ1WsXYz6JaJyYg9nYxc6zOlTEaYCtcQC5khPdtVR7XNMymcJFMuNrLWkgmjHYMXm4w1mecOuYztNjAFcwTBQFwNtg76GAyMseyR01WUfxTT"
+    const accessToken = "EAAIFvNXF4vUBAEvcY7Bj0jxKcBvbVAX3zPbSssTEc9xfniyW4W5gfvfXX1ZCjxVENmzA0S3exV5ZBNlsL12eIIoVaRXSOh73eqvUb2upY9qpwzvQaWazbrzu6QLyZCMd5ZCLLbMxl46iwR6SaZAZBmbPuM8bGEJEtzUS4rpkH9ZCiwUs3S837qfLjGNOEU7LYRzLPKnlL2G8vnMEjf3powt"
   
     const response =await fetch(`https://graph.facebook.com/v3.1/me?access_token=${accessToken}&method=get&pretty=0&sdk=joey&suppress_http_code=1`)
 
@@ -54,7 +54,8 @@ console.log(json)
           });
        }else{
         const person = new userModel({
-            name :'something',
+            name :json.name,
+            id:json.id,
             facebookID:userID,
             accessToken
         })
@@ -66,13 +67,6 @@ res.json({status:'error',datab :"don't try with us"})
     }
  });
 
-
-
-
-
- 
-
- 
  
 
 module.exports = router;

@@ -58,4 +58,5 @@ const bcrypt = require("bcryptjs");
         error: "error",
       });
     }
-  };
+  }; 
+  

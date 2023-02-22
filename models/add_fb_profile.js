@@ -11,9 +11,12 @@ const thisSchema = new Schema(
     platforms: [{
       type: String,
     }],
-    mediaUrls: {
-      type: Array,
-    },
+    // mediaUrls: {
+    //   type: Array,
+    // },
+    accessToken:{
+      type: String,
+    }
   
   },
   { timestamps: true }
