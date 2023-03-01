@@ -92,6 +92,7 @@ const label = require("./routes/label")
 const compose = require("./routes/compose")
 const create_goal = require("./routes/create_goal")
 const comment = require("./routes/comment")
+const campaign = require("./routes/campaign")
 
 
 
@@ -107,6 +108,8 @@ app.use("/", label);
 app.use("/", compose);
 app.use("/", create_goal);
 app.use("/", comment);
+app.use("/", campaign);
+
 
 
 
