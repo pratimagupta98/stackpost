@@ -3,11 +3,11 @@ const resp = require("../helpers/apiResponse");
 
 
 exports.add_Campaign = async (req, res) => {
-    const { campaign_name, goal} = req.body
+    const { campaign_name, goal } = req.body
     const newCampaign = new Campaign({
         campaign_name:campaign_name,
         goal:goal,
-        
+        // gsahdvdsgv
     });
     newCampaign.save()
         .then((data) => resp.successr(res, data))

@@ -5,10 +5,10 @@ const fs = require("fs");
 const resp = require("../helpers/apiResponse");
 var cron = require('node-cron');
 var moment = require('moment');
-var task = cron.schedule('* * * * * *', () =>  {
-      console.log('',moment().format('DD MM YYYY hh:mm:ss'));
-     this.checkifapiexecute();
-    });
+// var task = cron.schedule('* * * * * *', () =>  {
+//       console.log('',moment().format('DD MM YYYY hh:mm:ss'));
+//      this.checkifapiexecute();
+//     });
 dotenv.config();
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
