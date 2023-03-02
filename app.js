@@ -93,6 +93,7 @@ const compose = require("./routes/compose")
 const create_goal = require("./routes/create_goal")
 const comment = require("./routes/comment")
 const campaign = require("./routes/campaign")
+const myjournal = require("./routes/myjournal")
 
 
 
@@ -109,6 +110,7 @@ app.use("/", compose);
 app.use("/", create_goal);
 app.use("/", comment);
 app.use("/", campaign);
+app.use("/", myjournal);
 
 
 
