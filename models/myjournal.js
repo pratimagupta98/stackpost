@@ -17,7 +17,9 @@ const thisSchema = new Schema(
     desc: {
       type: String,
     },
-
+jrnl_img:{
+    type:Array
+}
   
   },
   { timestamps: true }
