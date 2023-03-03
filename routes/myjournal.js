@@ -12,7 +12,8 @@ const {
     getone_myJournal,
     personal_list,
     business_list,
-    notes_list
+    notes_list,
+    
    
 } = require("../controller/myjournal");
 
@@ -65,6 +66,7 @@ router.get("/admin/get_myJournal_bytype/:id", get_myJournal_bytype);
 router.get("/admin/personal_list", personal_list);
 router.get("/admin/business_list", business_list);
 router.get("/admin/notes_list", notes_list);
+//router.get("/admin/get_myJournal_bytype/:id", get_myJournal_bytype);
 
 
 module.exports = router;

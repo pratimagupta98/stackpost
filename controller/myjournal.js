@@ -19,7 +19,10 @@ exports.add_MyJournal= async (req, res) => {
     title: title,
     desc:desc
   });
- 
+  const findexist = await Myjournal.findOne({ type: type });
+  if (findexist) {
+    resp.alreadyr(res);
+  }
   if (req.files) {
     if (req.files.jrnl_img[0].path) {
         alluploads = [];
@@ -69,7 +72,7 @@ exports.myJournal_list = async (req, res) => {
   };
 
   exports.get_myJournal_bytype = async (req, res) => {
-     await Myjournal.find({ bannertype: req.params.id }).sort({
+     await Myjournal.find({ type: req.params.id }).sort({
       sortorder: 1,
     })
     .then((data) => resp.successr(res, data))
