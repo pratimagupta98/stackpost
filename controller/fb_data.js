@@ -1,4 +1,4 @@
-const PostFbdata = require("../models/campaign");
+const PostFbdata = require("../models/fb_data");
 const resp = require("../helpers/apiResponse");
 
 
