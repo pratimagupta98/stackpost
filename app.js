@@ -97,6 +97,7 @@ const myjournal = require("./routes/myjournal")
 const camp_category = require("./routes/camp_category")
 const re_work_space = require("./routes/re_work_space")
 
+const fb_data = require("./routes/fb_data")
 
 
 
@@ -115,10 +116,8 @@ app.use("/", campaign);
 app.use("/", myjournal);
 app.use("/", camp_category);
 app.use("/", re_work_space);
-
-
-
-
+app.use("/", fb_data);
+ 
 
 
 
