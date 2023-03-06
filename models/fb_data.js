@@ -13,7 +13,7 @@ const thisSchema = new Schema(
         type: Array,
       },
       social_platform:{
-        type: String,
+        type: Array,
       }
       
   
