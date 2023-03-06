@@ -3,9 +3,9 @@ const router = express.Router();
 const multer = require("multer");
 const fs = require("fs");
 
-const { addCategory, getallCategory } = require("../controller/category");
+const { addCategory, cmp_getallCategory } = require("../controller/camp_category");
 
 router.post("/user/addCategory", addCategory);
-router.get("/admin/getallCategory", getallCategory);
+router.get("/user/cmp_getallCategory", cmp_getallCategory);
 
 module.exports = router;

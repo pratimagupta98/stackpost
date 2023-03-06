@@ -1,4 +1,4 @@
-const Category = require("../models/category");
+const Category = require("../models/camp_category");
 const resp = require("../helpers/apiResponse");
 
 exports.addCategory = async (req, res) => {
@@ -14,7 +14,7 @@ exports.addCategory = async (req, res) => {
     .catch((error) => resp.errorr(res, error));
 };
 
-exports.getallCategory = async (req, res) => {
+exports.cmp_getallCategory = async (req, res) => {
   await Category.find()
     .sort({ createdAt: -1 })
     .then((data) => resp.successr(res, data))
