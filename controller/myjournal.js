@@ -19,7 +19,7 @@ exports.add_MyJournal= async (req, res) => {
     title: title,
     desc:desc
   });
-  const findexist = await Myjournal.findOne({ type: type });
+  const findexist = await Myjournal.findOne({ title: title });
   if (findexist) {
     resp.alreadyr(res);
   }
