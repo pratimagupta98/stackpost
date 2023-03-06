@@ -18,10 +18,10 @@ cloudinary.config({
 
 
 exports.add_compose = async (req, res) => {
-    const { url,uploaded_img,desc,date,time,label ,platform} = req.body
+    const { url,desc,date,time,label ,platform} = req.body
     const newCompose = new Compose({
         url:url,
-        uploaded_img:uploaded_img,
+      //  uploaded_img:uploaded_img,
         desc:desc,
         date:date,
         time:time,
@@ -57,7 +57,7 @@ exports.add_compose = async (req, res) => {
 
 
 exports.get_compose = async (req, res) => {
-    await Compose.find().populate("uploaded_img")
+    await Compose.find()
         .sort({ sortorder: 1 })
         .then((data) => resp.successr(res, data))
         .catch((error) => resp.errorr(res, error));

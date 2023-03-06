@@ -8,9 +8,9 @@ const thisSchema = new Schema(
     media_img: {
       type: Array,
     },
-    uploaded_img: {
-        type: mongoose.Schema.Types.ObjectId, ref: "media"
-      },
+    // uploaded_img: {
+    //     type: mongoose.Schema.Types.ObjectId, ref: "media"
+    //   },
       url:{
         type:String
       },
