@@ -94,7 +94,7 @@ const create_goal = require("./routes/create_goal")
 const comment = require("./routes/comment")
 const campaign = require("./routes/campaign")
 const myjournal = require("./routes/myjournal")
-const category = require("./routes/myjournal")
+const category = require("./routes/category")
 const re_work_space = require("./routes/re_work_space")
 
 
