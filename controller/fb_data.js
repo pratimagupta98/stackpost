@@ -18,7 +18,7 @@ exports.add_fb_workspace = async (req, res) => {
 }
 
 exports.get_workspace_data = async (req, res) => {
-    await Campaign.find().populate("userid").populate("post")
+    await PostFbdata.find()
         .sort({ sortorder: 1 })
         .then((data) => resp.successr(res, data))
         .catch((error) => resp.errorr(res, error));
@@ -26,20 +26,20 @@ exports.get_workspace_data = async (req, res) => {
 
 
 exports.viewone_Campaign = async (req, res) => {
-    await Campaign.findOne({ _id: req.params.id }).populate("userid").populate("post")
+    await PostFbdata.findOne({ _id: req.params.id }).populate("userid").populate("post")
         .then((data) => resp.successr(res, data))
         .catch((error) => resp.errorr(res, error));
 };
 
 exports.del_Campaign = async (req, res) => {
-    await Campaign.deleteOne({ _id: req.params.id })
+    await PostFbdata.deleteOne({ _id: req.params.id })
         .then((data) => resp.deleter(res, data))
         .catch((error) => resp.errorr(res, error));
 };
 
 exports.edit_Campaign = async (req, res) => {
 
-    await Campaign.findOneAndUpdate(
+    await PostFbdata.findOneAndUpdate(
         { _id: req.params.id },
         { $set: data },
         { new: true }
