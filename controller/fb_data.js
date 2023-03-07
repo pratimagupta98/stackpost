@@ -8,9 +8,14 @@ exports.add_fb_workspace = async (req, res) => {
         workspace_name:workspace_name,
         timezone:timezone,
         social_platform:social_platform,
-        img:img
+        img:img,
+        type:"true"
 
     });
+
+
+
+
     newPostFbdata.save()
         .then((data) => resp.successr(res, data))
         .catch((error) => resp.errorr(res, error));
