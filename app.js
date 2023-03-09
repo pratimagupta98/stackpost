@@ -99,6 +99,7 @@ const re_work_space = require("./routes/re_work_space")
 
 const fb_data = require("./routes/fb_data")
 
+const display_url = require("./routes/display_url")
 
 
 
@@ -117,6 +118,8 @@ app.use("/", myjournal);
 app.use("/", camp_category);
 app.use("/", re_work_space);
 app.use("/", fb_data);
+app.use("/", display_url);
+
  
 
 
