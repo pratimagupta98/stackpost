@@ -10,7 +10,31 @@ const thisSchema = new Schema(
     timezone: {
       type: String,
     },
-   
+   socialplatform:{
+    type:String,
+    default:false
+   },
+fbData:{
+  type:String
+},
+googleData :{
+  type:String
+},
+twitterData:{
+  type:String
+},
+linkedlnData:{
+  type:String
+},
+instaData:{
+  type:String
+},
+youtubeData:{
+  type:String
+},
+tiktokData:{
+  type :String
+}
     
   },
  

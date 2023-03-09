@@ -4,12 +4,21 @@ const bcrypt = require("bcryptjs");
 
 
   exports.createWorkSpace= async (req, res) => {
-    const { workspacename,timezone} = req.body;
+    const { workspacename,timezone,socialplatform,fbData,googleData,twitterData,linkedlnData,instaData,youtubeData,tiktokData} = req.body;
    
     const newWorkspce = new Workspce({
       
         workspacename:workspacename,
         timezone:timezone,
+        socialplatform:socialplatform,
+        fbData:fbData,
+        googleData:googleData,
+        twitterData:twitterData,
+        linkedlnData:linkedlnData,
+        instaData:instaData,
+        youtubeData:youtubeData,
+        tiktokData:tiktokData
+
        
      });
     const findexist = await Workspce.findOne({ workspacename: workspacename });
