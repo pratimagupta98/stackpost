@@ -10,4 +10,4 @@ const thisSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("category", thisSchema);
+module.exports = mongoose.model("camp_category", thisSchema);
