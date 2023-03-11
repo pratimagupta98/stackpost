@@ -4,14 +4,14 @@ const bcrypt = require("bcryptjs");
 
 
   exports.createWorkSpace= async (req, res) => {
-    const { workspacename,timezone,socialplatform,fbData,googleData,twitterData,linkedlnData,instaData,youtubeData,tiktokData} = req.body;
+    const { workspacename,timezone,socialplatform,facebookData,googleData,twitterData,linkedlnData,instaData,youtubeData,tiktokData} = req.body;
    
     const newWorkspce = new Workspce({
       
         workspacename:workspacename,
         timezone:timezone,
         socialplatform:socialplatform,
-        fbData:fbData,
+        facebookData:facebookData,
         googleData:googleData,
         twitterData:twitterData,
         linkedlnData:linkedlnData,
