@@ -14,9 +14,13 @@ const thisSchema = new Schema(
     type:String,
     default:false
    },
-facebookData:{
-  type:String
-},
+facebookData:[{
+  name:String,
+  email:String,
+  img:String
+}],
+ // type:String
+//},
 googleData :{
   type:String
 },
