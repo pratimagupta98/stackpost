@@ -13,7 +13,8 @@ const {
     personal_list,
     business_list,
     notes_list,
-    
+    createJournal_by_id,
+    list_by_Journalid
    
 } = require("../controller/myjournal");
 
@@ -48,7 +49,7 @@ const storage = multer.diskStorage({
   let uploads = multer({ storage: storage });
   
   let multipleUpload = uploads.fields([
-    { name: "jrnl_img", maxCount: 10 },
+    { name: "jrnl_img", maxCount: 5},
    
     //   { name: "storepan_img", maxCount: 5 },
     //   { name: "tradelicence_img", maxCount: 5 },
@@ -56,9 +57,14 @@ const storage = multer.diskStorage({
     //   { name: "address_proof_img", maxCount: 5 },
   ]);
  
- 
+  
  router.post("/user/add_MyJournal",multipleUpload, add_MyJournal);
+ router.post("/user/createJournal_by_id",multipleUpload, createJournal_by_id);
 router.get("/admin/myJournal_list", myJournal_list);
+router.get("/user/list_by_Journalid/:id", list_by_Journalid);
+
+
+
 router.get("/admin/dltMyJournal/:id", dltMyJournal);
 router.get("/admin/getone_myJournal/:id", getone_myJournal);
 router.get("/admin/get_myJournal_bytype/:id", get_myJournal_bytype);

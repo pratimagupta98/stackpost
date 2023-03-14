@@ -12,46 +12,131 @@ cloudinary.config({
 });
 exports.add_MyJournal= async (req, res) => {
   const { date,title,type,desc } = req.body;
+  create_randomString(8);
+  function create_randomString(string_length) {
+    (randomString = ""),
+      (characters =
+        "1234567890");
+    for (var i, i = 0; i < string_length; i++) {
+      randomString += characters.charAt(
+        Math.floor(Math.random() * characters.length)
+      );
+    }
+    return randomString;
+  }
+  const newMyjournal = new Myjournal({
+    date:date,
+    type:type,
+    title: title,
+    desc:desc,
+    my_journal_id:randomString
+  });
+ 
+
+const findexist = await Myjournal.findOne({
+  title: title,
+});
+if (findexist) {
+  resp.alreadyr(res);
+} 
+if (req.files) {
+  if (req.files.jrnl_img) {
+    alluploads = [];
+    for (let i = 0; i < req.files.jrnl_img.length; i++) {
+      const resp = await cloudinary.uploader.upload(
+        req.files.jrnl_img[i].path,
+        { use_filename: true, unique_filename: false }
+      );
+      fs.unlinkSync(req.files.jrnl_img[i].path);
+      alluploads.push(resp.secure_url);
+    }
+    newMyjournal.jrnl_img = alluploads;
+  }
+
+  newMyjournal
+    .save()
+    .then((data) => {
+      res.status(200).json({
+        status: true,
+        msg: "success",
+        data: data,
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        status: false,
+        msg: "error",
+        error: error,
+      });
+    });
+} else {
+  res.status(200).json({
+    status: false,
+    msg: "img not uploaded",
+  });
+}
+}
+exports.createJournal_by_id= async (req, res) => {
+  const { date,title,type,desc,my_journal_id } = req.body;
 
   const newMyjournal = new Myjournal({
     date:date,
     type:type,
     title: title,
-    desc:desc
+    desc:desc,
+    my_journal_id:my_journal_id
   });
-  const findexist = await Myjournal.findOne({ title: title });
-  if (findexist) {
-    resp.alreadyr(res);
-  }
-  if (req.files) {
-    if (req.files.jrnl_img[0].path) {
-        alluploads = [];
-        for (let i = 0; i < req.files.jrnl_img.length; i++) {
-            const resp = await cloudinary.uploader.upload(
-                req.files.jrnl_img[i].path,
-                { use_filename: true, unique_filename: false }
-            );
-            fs.unlinkSync(req.files.jrnl_img[i].path);
-            alluploads.push(resp.secure_url);
-        }
-        newMyjournal.jrnl_img = alluploads;
-        newMyjournal.save()
+ 
 
-
-            .then((data) => resp.successr(res, data))
-            .catch((error) => resp.errorr(res, error));
+const findexist = await Myjournal.findOne({
+  title: title,
+});
+if (findexist) {
+  resp.alreadyr(res);
+} 
+if (req.files) {
+  if (req.files.jrnl_img) {
+    alluploads = [];
+    for (let i = 0; i < req.files.jrnl_img.length; i++) {
+      const resp = await cloudinary.uploader.upload(
+        req.files.jrnl_img[i].path,
+        { use_filename: true, unique_filename: false }
+      );
+ fs.unlinkSync(req.files.jrnl_img[i].path);
+       alluploads.push(resp.secure_url);
     }
-}else{
-    res.status(404).json({
-        status: false,
-        
-        error: "error",
-      });
-}
+    newMyjournal.jrnl_img = alluploads;
   }
 
-
-
+  newMyjournal
+    .save()
+    .then((data) => {
+      res.status(200).json({
+        status: true,
+        msg: "success",
+        data: data,
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        status: false,
+        msg: "error",
+        error: error,
+      });
+    });
+} else {
+  res.status(200).json({
+    status: false,
+    msg: "img not uploaded",
+  });
+}
+}
+exports.list_by_Journalid = async (req, res) => {
+  await Myjournal.find({"my_journal_id":req.params.id})
+    .sort({ sortorder: 1 })
+    .then((data) => resp.successr(res, data))
+    .catch((error) => resp.errorr(res, error));
+};
 exports.myJournal_list = async (req, res) => {
     await Myjournal.find()
       .sort({ sortorder: 1 })

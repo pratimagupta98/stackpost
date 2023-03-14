@@ -19,6 +19,9 @@ const thisSchema = new Schema(
     },
 jrnl_img:{
     type:Array
+},
+my_journal_id:{
+  type: String,
 }
   
   },
