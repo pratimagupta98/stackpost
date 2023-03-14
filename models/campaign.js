@@ -8,9 +8,9 @@ const thisSchema = new Schema(
     campaign_name: {
       type: String,
     },
-    goal: {
-      type: mongoose.Schema.Types.ObjectId, ref: "creategoal"
-    },
+    // goal: {
+    //   type: mongoose.Schema.Types.ObjectId, ref: "creategoal"
+    // },
     password: {
       type: String,
     },

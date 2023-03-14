@@ -6,7 +6,7 @@ exports.add_Campaign = async (req, res) => {
     const { campaign_name, goal } = req.body
     const newCampaign = new Campaign({
         campaign_name:campaign_name,
-        goal:goal,
+        //goal:goal,
         // gsahdvdsgv
     });
     newCampaign.save()
