@@ -16,7 +16,7 @@ exports.add_Campaign = async (req, res) => {
 }
 
 exports.get_Campaign = async (req, res) => {
-    await Campaign.find().populate("userid").populate("post")
+    await Campaign.find()
         .sort({ sortorder: 1 })
         .then((data) => resp.successr(res, data))
         .catch((error) => resp.errorr(res, error));
