@@ -88,12 +88,12 @@ exports.createJournal_by_id= async (req, res) => {
   });
  
 
-const findexist = await Myjournal.findOne({
-  title: title,
-});
-if (findexist) {
-  resp.alreadyr(res);
-} 
+// const findexist = await Myjournal.findOne({
+//   title: title,
+// });
+// if (findexist) {
+//   resp.alreadyr(res);
+// } 
 if (req.files) {
   if (req.files.jrnl_img) {
     alluploads = [];
