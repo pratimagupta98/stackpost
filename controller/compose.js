@@ -18,42 +18,75 @@ cloudinary.config({
 
 
 exports.add_compose = async (req, res) => {
-    const { url,desc,date,time,label ,platform} = req.body
+    const { url,desc,date,time ,platform,minutes,hours,dayOfMonth,month,dayOfWeek} = req.body
+
+
     const newCompose = new Compose({
         url:url,
       //  uploaded_img:uploaded_img,
         desc:desc,
-        date:date,
-        time:time,
-        label:label,
-        platform:platform
+        // date:date,
+        // time:time,
+      //  label:label,
+        platform:platform,
+        minutes:minutes,
+        hours:hours,
+        dayOfMonth:dayOfMonth,
+        month:month,
+        dayOfWeek:dayOfWeek
     });
-    if (req.files) {
-        if (req.files.media_img[0].path) {
-            alluploads = [];
-            for (let i = 0; i < req.files.media_img.length; i++) {
-                const resp = await cloudinary.uploader.upload(
-                    req.files.media_img[i].path,
-                    { use_filename: true, unique_filename: false }
-                );
-                fs.unlinkSync(req.files.media_img[i].path);
-                alluploads.push(resp.secure_url);
-            }
-            newCompose.media_img = alluploads;
-            newCompose.save()
+    // if (req.files) {
+    //     if (req.files.media_img[0].path) {
+    //         alluploads = [];
+    //         for (let i = 0; i < req.files.media_img.length; i++) {
+    //             const resp = await cloudinary.uploader.upload(
+    //                 req.files.media_img[i].path,
+    //                 { use_filename: true, unique_filename: false }
+    //             );
+    //             fs.unlinkSync(req.files.media_img[i].path);
+    //             alluploads.push(resp.secure_url);
+    //         }
+    //         newCompose.media_img = alluploads;
+    //  
+const job = new cron.CronJob({
+  // Set up your cron schedule using template literals to include dynamic date and time values
+  cronTime: `${minutes} ${hours} ${dayOfMonth} ${month} ${dayOfWeek}`,
+  onTick: function() {
+    // This function will be executed when the cron job runs
+    console.log('Cron job executed at:', new Date());
+  },
+  start: true, // Start the cron job when the script runs
+  timeZone: 'UTC' // Set the timezone for the cron job
+},()=>{
+    newCompose.save()
+    res.status(200).json({
+        status:true,
+        data:newCompose
+    })
+})
 
+// Define your dynamic date and time values
+// const minutes = req.body.minutes; // Replace this with your desired minute value
+// const hours = req.body.hours; // Replace this with your desired hour value
+// const dayOfMonth = req.body.dayOfMonth; // Replace this with your desired day of month value
+// const month =  req.body.month // Replace this with your desired month value
+// const dayOfWeek = '1-5';
 
-                .then((data) => resp.successr(res, data))
-                .catch((error) => resp.errorr(res, error));
-        }
-    }else{
-        res.status(404).json({
-            status: false,
             
-            error: "error",
-          });
+
+
+                // .then((data) => resp.successr(res, data))
+                // .catch((error) => resp.errorr(res, error));
+       // }
     }
-}
+    // else{
+    //     res.status(404).json({
+    //         status: false,
+            
+    //         error: "error",
+    //       });
+//}
+
 
 
 exports.get_compose = async (req, res) => {

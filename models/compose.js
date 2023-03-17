@@ -23,12 +23,27 @@ const thisSchema = new Schema(
       time:{
         type:String
       },
-      label:{
-        type: mongoose.Schema.Types.ObjectId, ref: "label"
-      },
+      // label:{
+      //   type: mongoose.Schema.Types.ObjectId, ref: "label"
+      // },
       platform:[{
         type: String
     }],
+    minutes:{
+      type:String
+    },
+    hours:{
+      type:String
+    },
+    dayOfMonth:{
+      type:String
+    },
+    month:{
+      type:String
+    },
+    dayOfWeek:{
+      type:String
+    }
   
   },
   { timestamps: true }

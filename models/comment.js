@@ -8,7 +8,7 @@ const thisSchema = new Schema(
     type: mongoose.Schema.Types.ObjectId, ref: "user"
   },
   post:{
-    type: mongoose.Schema.Types.ObjectId, ref: "fbpost"
+    type: mongoose.Schema.Types.ObjectId, ref: "compose"
   },
     comment: {
       type: String,

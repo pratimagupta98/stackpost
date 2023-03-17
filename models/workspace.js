@@ -14,31 +14,86 @@ const thisSchema = new Schema(
     type:String,
     default:false
    },
-facebookData:[{
-  name:String,
-  email:String,
-  img:String
-}],
+facebookData:[
+  {
+  profileName:{type:String},
+  email:{type:String},
+  profileImg:{type:String},
+  accessToken:{type:String},
+  category:{type:String},
+  userId:{type:Number},
+  pageId:{type:Number},
+  pageName:{type:String}
+}
+],
  // type:String
 //},
-googleData :{
-  type:String
-},
-twitterData:{
-  type:String
-},
-linkedlnData:{
-  type:String
-},
-instaData:{
-  type:String
-},
-youtubeData:{
-  type:String
-},
-tiktokData:{
-  type :String
+googleData :[
+  {
+    profileName:{type:String},
+    email:{type:String},
+    profileImg:{type:String},
+    accessToken:{type:String},
+    category:{type:String},
+    userId:{type:Number},
+    pageId:{type:Number},
+    pageName:{type:String}
 }
+],
+twitterData:[
+  {
+    profileName:{type:String},
+    email:{type:String},
+    profileImg:{type:String},
+    accessToken:{type:String},
+    category:{type:String},
+    userId:{type:Number},
+    pageId:{type:Number},
+    pageName:{type:String}
+}
+],
+linkedlnData:[
+  {
+   profileName:{type:String},
+  email:{type:String},
+  profileImg:{type:String},
+  accessToken:{type:String},
+  category:{type:String},
+  userId:{type:Number},
+  pageId:{type:Number},
+  pageName:{type:String}
+}
+],
+instaData:[{
+   profileName:{type:String},
+  email:{type:String},
+  profileImg:{type:String},
+  accessToken:{type:String},
+  category:{type:String},
+  userId:{type:Number},
+  pageId:{type:Number},
+  pageName:{type:String}
+}],
+youtubeData:[{
+   profileName:{type:String},
+  email:{type:String},
+  profileImg:{type:String},
+  accessToken:{type:String},
+  category:{type:String},
+  userId:{type:Number},
+  pageId:{type:Number},
+  pageName:{type:String}
+}],
+tiktokData:[{
+   profileName:{type:String},
+  email:{type:String},
+  profileImg:{type:String},
+  accessToken:{type:String},
+  category:{type:String},
+  userId:{type:Number},
+  pageId:{type:Number},
+  pageName:{type:String}
+}]
     
   },
  

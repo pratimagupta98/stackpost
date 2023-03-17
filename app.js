@@ -11,6 +11,7 @@ mongoose.set('strictQuery', false);
  const passport = require('passport');
  const FacebookStrategy = require('passport-facebook').Strategy;
 
+ 
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -100,6 +101,7 @@ const re_work_space = require("./routes/re_work_space")
 const fb_data = require("./routes/fb_data")
 
 const display_url = require("./routes/display_url")
+const uProof_notification = require("./routes/uProof_notification")
 
 
 
@@ -119,6 +121,8 @@ app.use("/", camp_category);
 app.use("/", re_work_space);
 app.use("/", fb_data);
 app.use("/", display_url);
+app.use("/", uProof_notification);
+
 
  
 
