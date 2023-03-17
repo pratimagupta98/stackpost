@@ -61,3 +61,14 @@ const bcrypt = require("bcryptjs");
       .then((data) => resp.successr(res, data))
       .catch((error) => resp.errorr(res, error));
   };
+  exports.update_my_myWorkSpace = async (req, res) => {
+    await Workspce.findOneAndUpdate(
+      {
+        _id: req.params.id,
+      },
+      { $set: req.body },
+      { new: true }
+    )
+      .then((data) => resp.successr(res, data))
+      .catch((error) => resp.errorr(res, error));
+  };
