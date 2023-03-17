@@ -12,7 +12,8 @@ const {
     createWorkSpace,
     workSpace_list,
     dlt_workspace,
-    viewone_workspace
+    viewone_workspace,
+    update_my_myWorkSpace
     
 } = require("../controller/workspace");
 const { response } = require("express");
@@ -23,6 +24,7 @@ const { response } = require("express");
  router.get("/user/workSpace_list", workSpace_list);
  router.get("/user/dlt_workspace/:id", dlt_workspace);
  router.get("/user/viewone_workspace/:id", viewone_workspace);
+ router.post("/user/update_my_myWorkSpace/:id", update_my_myWorkSpace);
 
 
 
